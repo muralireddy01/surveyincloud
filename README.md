@@ -1,4 +1,4 @@
-# App tp shorten URLs
+# App to shorten URLs
 
 ## Installation
 1. Download the repository
