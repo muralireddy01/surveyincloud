@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>URL Shortener</title>
+    </head>
+    <div class="page-header">
+        <h1>URL Shortener</h1>
+    </div>
+
+    <div class="alert alert-danger ng-hide" role="alert" ng-show="errormsg">
+        <button type="button" class="close" aria-label="Close" ng-click="hideerr()"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> {{ errormsg}}
+    </div>
+
+    <div class="result jumbotron ng-hide" ng-show="resultshort">
+        Success you can now access <br /><a href="{{ resulturl}}">{{ resulturl}}</a><br /> at <br /><input type="text" class="resultshort" ng-model="resultshort">
+    </div>
+
+    <p class="lead">
+    <div class="form-group">
+        <label for="">URL</label>
+        <input type="text" ng-model="url" class="form-control" id="url" placeholder="www.theURL.com">
+    </div>
+    <label for="">Short</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">{{ baseurl}}</span>
+        <input type="text" ng-model="short" class="form-control" id="short" aria-describedby="basic-addon3">
+        <span class="input-group-addon" ng-click="genshort()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></span>
+    </div>
+    <br />
+    <div class="form-group">
+        <button ng-click="shorten()" type="button" class="btn btn-primary">Submit</button>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted"></p>
+        </div>
+    </footer>
+
+
+
+</body>
+</html>
