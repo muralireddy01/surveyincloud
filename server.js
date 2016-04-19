@@ -9,15 +9,7 @@ var methodOverride = require('method-override');
 	
 // config files
 var db = require('./config/db');
-mongoose.connect('mongodb://127.0.0.1:27017/test', function (err, db) {
-    if (err) {
-        console.log(err);
-        throw err;
-    } else {
-        console.log("successfully connected to the database");
-    }
-    //db.close();
-}); // connect to mongoDB
+mongoose.connect(db.url); // connect to mongoDB
 
 var port = process.env.PORT || 3000; // set our port
 

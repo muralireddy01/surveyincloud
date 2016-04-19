@@ -1,4 +1,4 @@
 module.exports = {
-	url : 'mongodb://127.0.0.1/geniac_urls',
+	url :  'mongodb://elrolete:alberdi69@ds013951.mlab.com:13951/proto_tennis'
         
 }
