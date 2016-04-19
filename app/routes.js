@@ -3,11 +3,11 @@ var utils = require('../config/utils');
 var express = require('express');
 var http = require('http');
 var request = require("request");
-var parseString = require('xml2js').parseString;
-var htmlparser = require("htmlparser");
+//var parseString = require('xml2js').parseString;
+//var htmlparser = require("htmlparser");
 var sys         = require("util");
-var Q = require("q"); 
-var rp = require('request-promise');
+//var Q = require("q"); 
+//var rp = require('request-promise');
 
 module.exports = function (app) {
 
@@ -28,26 +28,26 @@ module.exports = function (app) {
         var data = null;
         var rawHtml = null;
 
-        var handler = new htmlparser.DefaultHandler(function (error, dom) {
-                         console.log(error);     
-
-               });
-               var parser = new htmlparser.Parser(handler);
-//console.log("PARSER", parser);
-//console.log(parser.parseComplete(rawHtml));
-//sys.puts(sys.inspect(handler.dom, false, null));
-
-        
-
-        rp("http://rss.betfair.com/RSS.aspx?format=html&sportID=1").then(function(response) { 
-            //console.log("RESPONSE", response)
-        //rawHtml = response;
-               
-            parser.parseComplete(response);
-       sys.puts(sys.inspect(handler.dom, false, null));       
-       // result = parseString(xml);
+//        var handler = new htmlparser.DefaultHandler(function (error, dom) {
+//                         console.log(error);     
+//
+//               });
+//               var parser = new htmlparser.Parser(handler);
+////console.log("PARSER", parser);
+////console.log(parser.parseComplete(rawHtml));
+////sys.puts(sys.inspect(handler.dom, false, null));
+//
+//        
+//
+//        rp("http://rss.betfair.com/RSS.aspx?format=html&sportID=1").then(function(response) { 
+//            //console.log("RESPONSE", response)
+//        //rawHtml = response;
+//               
+//            parser.parseComplete(response);
+//       sys.puts(sys.inspect(handler.dom, false, null));       
+//       // result = parseString(xml);
     
-       });
+//       });
        
 
 
