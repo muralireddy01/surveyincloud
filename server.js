@@ -11,6 +11,7 @@ var methodOverride = require('method-override');
 var db = require('./config/db');
 mongoose.connect('mongodb://127.0.0.1:27017/test', function (err, db) {
     if (err) {
+        console.log(err);
         throw err;
     } else {
         console.log("successfully connected to the database");
