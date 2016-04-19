@@ -1,5 +1,38 @@
 <div class="jumbotron text-center">
-	<h1>Geniac Test</h1>
+    <h1>Geniac Test</h1>
 
-	<p>{{ tagline }}</p>
+    <p>{{ tagline}}</p>
+    <iframe src="https://www.betfair.com/exchange/inplay"></iframe>
+    <br/>
+    <label>Was the player the favourite?
+        <input type="checkbox" ng-model="scoreQuestions.favourite">
+    </label><br/>
+    <label>Do you know the player and are you following this player?
+        <input type="checkbox" ng-model="scoreQuestions.known">
+    </label><br/>
+    <label>Are you completely sure he will win?
+        <input type="checkbox" ng-model="scoreQuestions.winner">
+    </label><br/>
+     <label>Are you starting the day?
+        <input type="checkbox" ng-model="scoreQuestions.starting">
+    </label><br/>
+       <label>Is the amount higher than 15%?
+        <input type="checkbox" ng-model="scoreQuestions.prop">
+    </label><br/>
+    <label>Set Number One?
+        <input type="checkbox" ng-model="scoreQuestions.setNumber"
+               ng-true-value="'UNO'" ng-false-value="'TRES'"/>
+    </label><br/>
+    <div ng-show="result()"/>
+     <h2>Let's go</h2>
+    </div>
+    <div ng-show="!result()"/>
+     <h2>Wait</h2>
+    </div>
+<!--    <div ng-show="!result()">
+    <h2>The number is odd.</h2>
+    </div>-->
+    <!--</div>-->
+    <!--<tt>Let's go = {{stopSilly.result}}</tt><br/>-->
+
 </div>
