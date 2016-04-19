@@ -1,4 +1,4 @@
-var db = require('../app/models/shortUrlModel');
+//var db = require('../app/models/shortUrlModel');
 var utils = require('../config/utils');
 var express = require('express');
 var http = require('http');
