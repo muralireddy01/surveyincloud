@@ -1,4 +1,4 @@
-//var db = require('../app/models/shortUrlModel');
+var db = require('../app/models/shortUrlModel');
 var utils = require('../config/utils');
 var express = require('express');
 var http = require('http');
@@ -56,12 +56,12 @@ module.exports = function (app) {
         if (req.body.url === '' || req.body.url === undefined) {
             return res.send(400);
         }
-//        db.create(req.body.url, req.body.short, function (err, creation) {
-//            if (creation) {
-//                data = buildResponse(201, "Success, short created!", {"url": creation.url, "short": creation.short, "baseurl": utils.getDomain()});
-//            }
-//            respond(res, data);
-//        });
+        db.create(req.body.url, req.body.short, function (err, creation) {
+            if (creation) {
+                data = buildResponse(201, "Success, short created!", {"url": creation.url, "short": creation.short, "baseurl": utils.getDomain()});
+            }
+            respond(res, data);
+        });
     });
 
     app.get('/shorten-url', function (req, res) {
