@@ -1,4 +1,4 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope, $sce) {
+angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function($scope, $sce) {
 
     $scope.tagline = 'The best framework...is it not?';
    // $scope.result = result();
@@ -46,4 +46,12 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $sc
         };
               
     };
+    
+    $scope.myDiscreteValue = {
+        min: 1.0,
+        max: 3.9
+    };
+     $scope.vol = 1.5;
+  $scope.bass = 1.6;
+  $scope.master = Math.floor(Math.random() * 100);
 });

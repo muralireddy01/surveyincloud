@@ -29,6 +29,28 @@
     <div ng-show="!result()"/>
      <h2>Wait</h2>
     </div>
+    <md-content layout="row" layout-padding>
+    <md-slider-container flex>
+      <md-input-container>
+        <input flex type="number" ng-model="vol" aria-label="volume" aria-controls="volume-slider">
+      </md-input-container>
+      <md-slider ng-model="vol" min="1.0" max="3.9" aria-label="volume" step="0.1" id="volume-slider" class="md-accent" md-vertical
+                 md-range></md-slider>
+      </md-slider>
+      <h5>Lay</h5>
+    </md-slider-container>
+    <md-slider-container flex>
+      <md-input-container>
+        <input flex type="number" ng-model="bass" aria-label="lay" aria-controls="bass-slider">
+      </md-input-container>
+      <md-slider md-discrete ng-model="bass" min="1.0" max="3.9" step="0.1" aria-label="bass" class="md-primary"
+                 md-vertical></md-slider>
+      </md-slider>
+      <h5>Back</h5>
+    </md-slider-container>
+    
+  </md-content>
+
 <!--    <div ng-show="!result()">
     <h2>The number is odd.</h2>
     </div>-->
