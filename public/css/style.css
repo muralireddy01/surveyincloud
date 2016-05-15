@@ -6,7 +6,7 @@ body { padding-top:10px;
 }
 .checkbox input[type=checkbox] {
     padding-left: 2px;
-    margin-left: -12%;
+    margin-left: -8%;
 }
 .range-slider-container {
             position: relative;
