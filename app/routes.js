@@ -54,18 +54,33 @@ module.exports = function (app) {
        
             
         if (req.body.url === '' || req.body.url === undefined) {
+            console.log("ENTRA MAL");
             return res.send(400);
         }
         db.create(req.body.url, req.body.short, function (err, creation) {
+            console.log("MATIS",req.body);
             if (creation) {
                 data = buildResponse(201, "Success, short created!", {"url": creation.url, "short": creation.short, "baseurl": utils.getDomain()});
             }
             respond(res, data);
         });
     });
+    
+    app.post('/save_deal', function (req, res) {
+        if (req.body.url === '' || req.body.url === undefined) {
+            console.log("BODY", req.body);
+            return res.send(400);
+        }
+    });
 
     app.get('/shorten-url', function (req, res) {
-
+        console.log("entra");
+        return res.send(200);
+    });
+    
+    app.get('/feedback-topic', function (req, res) {
+        console.log("entra");
+        return res.send(200);
     });
 
     app.get('/contact', function (req, res) {

@@ -1,7 +1,6 @@
-angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function($scope, $sce) {
+angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function($scope, $sce, $http, $location) {
 
-    $scope.tagline = 'The best framework...is it not?';
-   // $scope.result = result();
+    $scope.tagline = 'Enter your email address';
     
     $scope.trustUrl = function(url) {
         var url = "www.google.com"
@@ -17,41 +16,33 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         prop: false,
         setNumber: false
     };
-    $scope.stopSilly = {
-        
+    
+    $scope.up = function () {
+        console.log("ENTRA");
+        $scope.bass+0.1;
     };
+    
+    $scope.processForm = function(nextView) {
+        $http({
+        method  : 'POST',
+        url     : '/save_deal',
+        data    : $scope.vol,  // pass in data as strings
+        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+        })
+        .success(function(data) {
+          console.log(data);
 
-   
-    
-    $scope.result = function () {
-        var question = 0;
-        console.log($scope.scoreQuestions);
-        if ($scope.scoreQuestions.setNumber === "UNO") {
-            
-            angular.forEach($scope.scoreQuestions, function(questions) {
-                console.log("Q", questions);
-                if (questions === true) {
-                    question++;
-                }
-                console.log("QUESTION", question);
-                
-            });
-            if (question >= 5) {
-                    console.log("CAMBIA FALSE");
-                    return true;  
-                } else {
-                    console.log("CAMBIA TRUE");
-                     return false;
-                }
-        };
-              
+            if (!data.success) {
+              // if not successful, bind errors to error variables
+              $scope.errorName = data.errors.name;
+              $scope.errorSuperhero = data.errors.superheroAlias;
+            } else {
+              // if successful, bind success message to message
+              $scope.message = data.message;
+            }
+        });
+        $location.path('feedback-topic');
     };
+  
     
-    $scope.myDiscreteValue = {
-        min: 1.0,
-        max: 3.9
-    };
-     $scope.vol = 1.5;
-  $scope.bass = 1.6;
-  $scope.master = Math.floor(Math.random() * 100);
 });
