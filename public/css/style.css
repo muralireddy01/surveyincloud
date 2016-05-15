@@ -1,8 +1,12 @@
 body { padding-top:10px;
-       font-size: 50px;
+       font-size: 30px;
 }
 .jumbotron p {
-  font-size: 50px;  
+  font-size: 30px;  
+}
+.checkbox input[type=checkbox] {
+    padding-left: 2px;
+    margin-left: -12%;
 }
 .range-slider-container {
             position: relative;
