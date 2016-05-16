@@ -2,7 +2,7 @@ body { padding-top:10px;
        font-size: 2em;
 }
 .jumbotron p {
-  font-size: 30px;  
+  font-size: 2em;  
 }
 .navbar-brand {
     font-size: 2em;
@@ -26,7 +26,7 @@ body { padding-top:10px;
 }
 
 .btn-group-lg>.btn, .btn-lg {
-    margin-top: 9em;
+    margin-top: 0em;
 }
 
 form label {
