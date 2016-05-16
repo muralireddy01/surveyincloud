@@ -7,15 +7,21 @@ body { padding-top:10px;
 .navbar-brand {
     font-size: 2em;
 }
-.ng-scope {
-    height: 3000%;
-}
 .checkbox input[type=checkbox] {
     padding-left: 2px;
 /*    margin-left: -5%;*/
+    position: relative;
     min-height:30px;
     min-width:30px;
 }
+.container {
+    width: 100%;
+}
+
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+    position: relative;
+}
+
 .btn-group-lg>.btn, .btn-lg {
     margin-top: 9em;
 }
