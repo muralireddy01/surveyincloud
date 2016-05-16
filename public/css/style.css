@@ -15,7 +15,7 @@ body { padding-top:10px;
     min-width:30px;
 }
 .container {
-    width: 95%;
+    width: 92%;
 }
 
 .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
