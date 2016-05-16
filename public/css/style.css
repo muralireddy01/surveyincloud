@@ -1,16 +1,28 @@
 body { padding-top:10px;
-       font-size: 30px;
+       font-size: 2em;
 }
 .jumbotron p {
   font-size: 30px;  
 }
+.navbar-brand {
+    font-size: 2em;
+}
+.ng-scope {
+    height: 3000%;
+}
 .checkbox input[type=checkbox] {
     padding-left: 2px;
     margin-left: -5%;
+    min-height:30px;
+    min-width:30px;
 }
+.btn-group-lg>.btn, .btn-lg {
+    margin-top: 9em;
+}
+
 form label {
             display: block;
-            text-align: center;
+            
             margin-top: 0px;
             padding-bottom: 5px;
         }
