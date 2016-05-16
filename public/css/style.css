@@ -12,7 +12,7 @@ body { padding-top:10px;
 }
 .checkbox input[type=checkbox] {
     padding-left: 2px;
-    margin-left: -5%;
+/*    margin-left: -5%;*/
     min-height:30px;
     min-width:30px;
 }
