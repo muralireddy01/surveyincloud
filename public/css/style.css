@@ -7,6 +7,15 @@ body { padding-top:10px;
 .navbar-brand {
     font-size: 2em;
 }
+.page-header {
+    margin-top: 0.2em;
+}
+
+.container .jumbotron, .container-fluid .jumbotron {
+margin-top: 1em;
+height: 35em;
+}
+
 .checkbox input[type=checkbox] {
     padding-left: 2px;
 /*    margin-left: -5%;*/
