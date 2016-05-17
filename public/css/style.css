@@ -25,6 +25,13 @@ height: 35em;
     /*font-size: 2em;*/    
 }
 
+.typetext{
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 38em;
+    margin-bottom: 0.5em;
+}
 .checkbox, .radio {
     font-size: 2em;  
 }

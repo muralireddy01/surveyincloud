@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>URL Shortener</title>
+    </head>
+    <form ng-submit="submitGoal('nextview')">
+        <div class="page-header">
+            <h1>Results Feedback</h1>
+        </div>
+
+        <div class="alert alert-danger ng-hide" role="alert" ng-show="errormsg">
+            <button type="button" class="close" aria-label="Close" ng-click="hideerr()"><span aria-hidden="true">&times;</span></button>
+            <strong>Error!</strong> {{ errormsg}}
+        </div>
+
+        <img ng-src="../../images/sample.jpg" alt="Description" />
+        
+
+
+
+<!--        <button type="submit" class="btn btn-success btn-lg btn-block">
+            <span class="glyphicon glyphicon-flash"></span> Next
+        </button>-->
+
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted"></p>
+            </div>
+        </footer>
+    </form>

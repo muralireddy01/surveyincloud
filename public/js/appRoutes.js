@@ -17,6 +17,14 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/feedback-topic.html',
 			controller: 'MainController'	
 		})
+                .when('/goal', {
+			templateUrl: 'views/goal.html',
+			controller: 'MainController'	
+		})
+                .when('/graphs', {
+			templateUrl: 'views/graphs.html',
+			controller: 'MainController'	
+		})
 
 		.when('/contact', {
 			templateUrl: 'views/contact.html',

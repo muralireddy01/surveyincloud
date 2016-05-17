@@ -43,6 +43,13 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         });
         $location.path('feedback-topic');
     };
-  
+    
+    $scope.submitFeedback = function() {
+        $location.path('goal');      
+    };
+    
+    $scope.submitGoal = function () {
+        $location.path('graphs');      
+    };
     
 });
