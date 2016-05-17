@@ -13,6 +13,11 @@ body { padding-top:10px;
     position: relative;
     min-height:30px;
     min-width:30px;
+    /*font-size: 2em;*/    
+}
+
+.checkbox, .radio {
+    font-size: 2em;  
 }
 .checkbox label, .radio label {
      background-color: #e1e1e1;
