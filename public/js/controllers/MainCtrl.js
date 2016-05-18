@@ -1,6 +1,6 @@
 angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function($scope, $sce, $http, $location) {
 
-    $scope.tagline = 'Enter your email address';
+    $scope.tagline = 'Enter your CG Number';
     
     $scope.trustUrl = function(url) {
         var url = "www.google.com"
@@ -21,6 +21,10 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         console.log("ENTRA");
         $scope.bass+0.1;
     };
+    
+    $scope.feedback = function () {
+        topic : "The topic was very interesting and useful"
+    }
     
     $scope.processForm = function(nextView) {
         $http({

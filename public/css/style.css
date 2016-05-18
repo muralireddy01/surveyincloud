@@ -16,13 +16,17 @@ margin-top: 1em;
 height: 35em;
 }
 
-.checkbox input[type=checkbox] {
+.radio input[type=radio] {
     padding-left: 2px;
 /*    margin-left: -5%;*/
     position: relative;
     min-height:30px;
     min-width:30px;
+    background: url(../images/radio.png) 0 -1px no-repeat;
+    height: 16px;
+    padding: 0 0 0 18px;
     /*font-size: 2em;*/    
+    
 }
 
 .typetext{
@@ -36,10 +40,16 @@ height: 35em;
     font-size: 2em;  
 }
 .checkbox label, .radio label {
-     background-color: #e1e1e1;
+     background-color: #d3d3d3;
 }
 .container {
     width: 92%;
+}
+
+.btn-success:hover {
+    color: #fff;
+    background-color: peru;
+    border-color: #9A347C;
 }
 
 .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
@@ -48,6 +58,7 @@ height: 35em;
 
 .btn-group-lg>.btn, .btn-lg {
     margin-top: 0em;
+    line-height: 0.1em;
 }
 
 form label {

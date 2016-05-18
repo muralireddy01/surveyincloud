@@ -14,26 +14,26 @@
         </div>
 
 
-        <div class="checkbox">
+         <div class="radio">
             <label>
-                <input type="checkbox"> I joint to this meeting to improve my knowledge in this tech
+                <input type="radio" ng-model="feedback.topic" value="I joint to this meeting to improve my knowledge in this tech">
+                I joint to this meeting to improve my knowledge in this tech
             </label>
         </div>
 
-        <div class="checkbox">
+        <div class="radio">
             <label>
-                <input type="checkbox"> I attended the topic because I was bored at home
+                <input type="radio" ng-model="feedback.topic" value=" I attended the topic because I was bored at home"> 
+                I attended the topic because I was bored at home
             </label>
         </div>
-        <div class="checkbox">
+        <div class="radio">
             <label>
-                <input type="checkbox"> I need to master in this topic
+                <input type="radio" ng-model="feedback.topic" value="I need to master in this topic"> 
+                I need to master in this topic
             </label>
         </div>
-       
-
-
-
+        
         <button type="submit" class="btn btn-success btn-lg btn-block">
             <span class="glyphicon glyphicon-flash"></span> Next
         </button>

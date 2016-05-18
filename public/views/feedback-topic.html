@@ -14,34 +14,26 @@
         </div>
 
 
-        <div class="checkbox">
+        
+        <div class="radio">
             <label>
-                <input type="checkbox">     The topic was very interesting and useful
+                <input type="radio" ng-model="feedback.topic" value="The topic was very interesting and useful">The topic was very interesting and useful
+                The topic was very interesting and useful
             </label>
         </div>
 
-        <div class="checkbox">
+        <div class="radio">
             <label>
-                <input type="checkbox"> The topic was interesting however I don't think is useful to perform my work on a daily basis
+                <input type="radio" ng-model="feedback.topic" value="The topic was interesting however I don't think is useful to perform my work on a daily basis"> 
+                The topic was interesting however I don't think is useful to perform my work on a daily basis
             </label>
         </div>
-        <div class="checkbox">
+        <div class="radio">
             <label>
-                <input type="checkbox"> The topic was not interesting however I will add to my CV
+                <input type="radio" ng-model="feedback.topic" value="The topic was not interesting however I will add to my CV"> 
+                The topic was not interesting however I will add to my CV
             </label>
         </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox"> The topic was not interesting not even useful to add in my CV
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox"> Training 5
-            </label>
-        </div>
-
-
 
         <button type="submit" class="btn btn-success btn-lg btn-block">
             <span class="glyphicon glyphicon-flash"></span> Next
