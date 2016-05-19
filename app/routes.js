@@ -26,39 +26,11 @@ module.exports = function (app) {
 
     app.post('/create', function (req, res) {
         var data = null;
-        var rawHtml = null;
-
-//        var handler = new htmlparser.DefaultHandler(function (error, dom) {
-//                         console.log(error);     
-//
-//               });
-//               var parser = new htmlparser.Parser(handler);
-////console.log("PARSER", parser);
-////console.log(parser.parseComplete(rawHtml));
-////sys.puts(sys.inspect(handler.dom, false, null));
-//
-//        
-//
-//        rp("http://rss.betfair.com/RSS.aspx?format=html&sportID=1").then(function(response) { 
-//            //console.log("RESPONSE", response)
-//        //rawHtml = response;
-//               
-//            parser.parseComplete(response);
-//       sys.puts(sys.inspect(handler.dom, false, null));       
-//       // result = parseString(xml);
-    
-//       });
-       
-
-
-       
-            
+        
         if (req.body.url === '' || req.body.url === undefined) {
-            console.log("ENTRA MAL");
             return res.send(400);
         }
         db.create(req.body.url, req.body.short, function (err, creation) {
-            console.log("MATIS",req.body);
             if (creation) {
                 data = buildResponse(201, "Success, short created!", {"url": creation.url, "short": creation.short, "baseurl": utils.getDomain()});
             }
@@ -74,13 +46,15 @@ module.exports = function (app) {
     });
 
     app.get('/shorten-url', function (req, res) {
-        console.log("entra");
         return res.send(200);
     });
     
     app.get('/feedback-topic', function (req, res) {
-        console.log("entra");
-        return res.send(200);
+        res.redirect('/'); //"http://localhost:3000";
+    });
+    
+    app.get('/goal', function (req, res) {
+        res.redirect('/'); //"http://localhost:3000";
     });
 
     app.get('/contact', function (req, res) {
