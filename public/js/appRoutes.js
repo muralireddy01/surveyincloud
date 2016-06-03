@@ -5,7 +5,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 		// home page
 		.when('/', {
 			templateUrl: 'views/home.html',
-			controller: 'MainController'
+			//controller: 'MainController'
 		})
 
 		.when('/shorten-url', {
@@ -15,15 +15,19 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
                 
                 .when('/feedback-topic', {
 			templateUrl: 'views/feedback-topic.html',
-			controller: 'MainController'	
+			//controller: 'MainController'	
 		})
                 .when('/goal', {
 			templateUrl: 'views/goal.html',
-			controller: 'MainController'	
+			//controller: 'MainController'	
 		})
                 .when('/graphs', {
 			templateUrl: 'views/graphs.html',
-			controller: 'MainController'	
+			//controller: 'MainController'	
+		})
+                .when('/freetext', {
+			templateUrl: 'views/freetext.html',
+			//controller: 'MainController'	
 		})
 
 		.when('/contact', {

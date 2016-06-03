@@ -1,13 +1,17 @@
+<head>
+    <script src="libs/angular-messages/angular-messages.min.js"></script>   
+</head>
 <div class="jumbotron text-center">
-    <form ng-submit="processForm()">
-        <h1></h1>
-
+    <form name="myForm" ng-submit="processForm()">
         <p>{{ tagline}}</p>
 
         <br/>
-        <input type="text" class="typetext"/>
+        <input type="text" name="cgnumber" ng-model="value" required>
+        <div ng-messages="myForm.cgnumber.$error">
+            <div ng-message="required">This field is required</div>
+        </div>
         </br>
-        <button type="submit" class="btn btn-success btn-lg btn-block">
+        <button ng-click="keepCgNumber(value)" class="btn btn-success btn-lg btn-block">
             <span class="glyphicon glyphicon-flash"></span> Next
         </button>
     </form>

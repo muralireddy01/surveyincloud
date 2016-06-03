@@ -3,39 +3,44 @@
     <head>
         <title>URL Shortener</title>
     </head>
-    <form ng-submit="submitGoal('nextview')">
-        <div class="page-header">
-            <h1>Topic Feedback</h1>
-        </div>
+    <body ng-controller="MainController">
+        <form ng-submit="submitGoal('nextview')">
 
-        <div class="alert alert-danger ng-hide" role="alert" ng-show="errormsg">
-            <button type="button" class="close" aria-label="Close" ng-click="hideerr()"><span aria-hidden="true">&times;</span></button>
-            <strong>Error!</strong> {{ errormsg}}
-        </div>
+            {{ infoProvided}} 
 
+            <div class="page-header">
+                <h1>Topic Feedback</h1>
+            </div>
 
-         <div class="radio">
-            <label>
-                <input type="radio" ng-model="feedback.topic" value="I joint to this meeting to improve my knowledge in this tech">
-                I joint to this meeting to improve my knowledge in this tech
-            </label>
-        </div>
+            <div class="radio">
+                <label>What is better??</label>
+                <label>
+                    <input type="radio" ng-model="topicB" value="100 chicken sized elephants">100 chicken sized elephants
+                </label>
+            </div>
 
-        <div class="radio">
-            <label>
-                <input type="radio" ng-model="feedback.topic" value=" I attended the topic because I was bored at home"> 
-                I attended the topic because I was bored at home
-            </label>
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" ng-model="feedback.topic" value="I need to master in this topic"> 
-                I need to master in this topic
-            </label>
-        </div>
-        
-        <button type="submit" class="btn btn-success btn-lg btn-block">
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="topicB" value="1 elephant sized chicken">1 elephant sized chicken
+                </label>
+            </div>
+            <label>And..the most important question!!</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="topicC" value="Ant">Ant
+                </label>
+            </div>
+
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="topicC" value="Dec">Dec
+                </label>
+            </div>
+
+            <button ng-click="keepAnswersBandC(topicB, topicC)" class="btn btn-success btn-lg btn-block" 
+                    ng-disabled="!topicB || !topicC" />
             <span class="glyphicon glyphicon-flash"></span> Next
+            
         </button>
 
         <footer class="footer">

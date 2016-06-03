@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<body ng-app="app" ng-controller="MainController">
+
+    <form name="myForm" ng-submit="submitFeedback()">
+    </br>
+    <div>Plese, provide your feedback</div>
+
+    <div class="radio">
+        <textarea ng-model="freetext" required class="form-control custom-control" 
+                  ng-minlength="3" ng-maxlength="500" rows="20"  columns="20" style="resize:none">
+                      
+        </textarea> 
+        
+    </div>
+    </br>
+    <button ng-click="keepFeeText(freetext)" class="btn btn-success btn-lg btn-block" 
+            ng-disabled="!freetext" />
+    <span class="glyphicon glyphicon-flash"></span> Next
+    </button>
+    
+
+
