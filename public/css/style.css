@@ -8,9 +8,17 @@ textarea {
   font-size: 16px;
 }
 
-.jumbotron p {
-  font-size: 1em;  
+.h1, h1 {
+    font-size: 2em;  
 }
+
+.jumbotron p {
+  font-size: 2em;  
+}
+
+/*.ng-scope{
+  font-size: 1.2em;    
+}*/
 .navbar-brand {
     font-size: 2em;
 }
