@@ -1,13 +1,9 @@
-var db = require('../app/models/shortUrlModel');
+var db = require('../app/models/feedbackModel');
 var utils = require('../config/utils');
 var express = require('express');
 var http = require('http');
 var request = require("request");
-//var parseString = require('xml2js').parseString;
-//var htmlparser = require("htmlparser");
 var sys         = require("util");
-//var Q = require("q"); 
-//var rp = require('request-promise');
 
 module.exports = function (app) {
 
@@ -38,10 +34,18 @@ module.exports = function (app) {
         });
     });
     
-    app.post('/save_deal', function (req, res) {
+    app.post('/save_feedback', function (req, res) {
+        var data = null;
         if (req.body.url === '' || req.body.url === undefined) {
-            console.log("BODY", req.body);
-            return res.send(400);
+            return res.send(402);
+        } else {
+            console.log("answers", req.body.url);
+            db.create(req.body.url, function(error, creation) {
+                if (creation) {
+                data = buildResponse(201, "Success, short created!");   
+                }
+            respond(res, data);
+            });
         }
     });
 
