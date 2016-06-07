@@ -7,6 +7,7 @@
     "angular-route": "latest",
     "angular-slider": "latest",
     "angular-material": "^1.0.7",
-    "angular-messages": "1.5.7-build.4840+sha.146dad7"
+    "angular-messages": "1.5.7-build.4840+sha.146dad7",
+    "highcharts": "^4.2.5"
   }
 }
