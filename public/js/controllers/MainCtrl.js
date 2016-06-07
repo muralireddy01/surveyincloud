@@ -115,12 +115,10 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
       items: '='
     },
     controller: function ($scope, $element, $attrs) {
-      console.log(2);
 
     },
     template: '<div id="container" style="margin: 0 auto">not working</div>',
     link: function (scope, element, attrs) {
-      console.log(3);
       var chart = new Highcharts.Chart({
         chart: {
           renderTo: 'container',
