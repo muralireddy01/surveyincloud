@@ -6,8 +6,6 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         topic : "The topic was very interesting and useful"
     };
 
-//    $scope.calculatePlayers = null;
-
     $scope.infoProvided = {
         "questionA": null,
         "questionB": null,
@@ -17,7 +15,7 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
     };
 
     $scope.graphPlayers = [
-        ['Ronaldo', 0],
+        ['CR7', 0],
         ['Messi', 0],
         ['Ronaldinho', 0]
     ];
@@ -68,7 +66,7 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         if (data.data[i].questionA == 'Cristiano Ronaldo') {
             $scope.cron += 1;
             $scope.graphPlayers = [
-                ['Ronaldo', $scope.cron],
+                ['CR7', $scope.cron],
                 ['Messi', $scope.mess],
                 ['Ronaldinho', $scope.rona]
             ];
@@ -116,7 +114,7 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         $timeout(function() {
             $scope.limitedIdeas = limitToFilter($scope.graphPlayers, 3);
             $location.path('/graphs');
-        }, 2000);         
+        }, 2500);         
     };
 
 //    $scope.ideas = [
@@ -151,7 +149,7 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
                             plotShadow: false
                         },
                         title: {
-                            text: 'Best Football Player in the World'
+                            text: ''
                         },
                         tooltip: {
                             pointFormat: '{series.name}: <b>{point.percentage}%</b>',

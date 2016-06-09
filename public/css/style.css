@@ -51,6 +51,30 @@ height: 35em;
     
 }
 
+//HIGHCHARTS CSS
+.container-independency {
+    width: 90%;
+    max-width: 1620px;
+    background-color: #b8860b;
+    clear: both;
+    padding: 1%;
+    box-sizing: border-box;
+}
+.independency {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
+    background-color: #ffb6c1;
+    box-sizing: border-box;
+}
+.highcharts-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
 .typetext{
     font-family: inherit;
     font-size: inherit;
@@ -66,6 +90,7 @@ height: 35em;
 }
 .container {
     width: 92%;
+/*    margin-left: 0px;*/
 }
 
 .btn-success:hover {
