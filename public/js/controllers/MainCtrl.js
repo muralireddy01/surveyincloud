@@ -114,7 +114,7 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         $timeout(function() {
             $scope.limitedIdeas = limitToFilter($scope.graphPlayers, 3);
             $location.path('/graphs');
-        }, 2500);         
+        }, 1500);         
     };
 
 //    $scope.ideas = [
