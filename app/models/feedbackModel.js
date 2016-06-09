@@ -45,9 +45,9 @@ module.exports = {
                 
         var promiseSave = newFeedback.save();
         
-        promiseSave.then(function () {
-        })
-        .catch(console.log);
+//        promiseSave.then(function () {
+//        })
+//        .catch(console.log);
 
         return true;
     },
