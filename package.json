@@ -9,7 +9,8 @@
     "mongodb": "^2.1.18",
     "mongodb-promise": "0.0.4",
     "mongoose": "4.1.9",
-    "randomstring": "^1.1.5"
+    "randomstring": "^1.1.5",
+    "request": "^2.72.0"
   },
   "scripts": {
     "start": "node server.js"
