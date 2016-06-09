@@ -16,24 +16,6 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
     };
 
     $scope.processForm = function (nextView) {
-//        $http({
-//        method  : 'POST',
-//        url     : '/save_deal',
-//        data    : $scope.vol,  // pass in data as strings
-//        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
-//        })
-//        .success(function(data) {
-//          console.log(data);
-//
-//            if (!data.success) {
-//              // if not successful, bind errors to error variables
-//              $scope.errorName = data.errors.name;
-//              $scope.errorSuperhero = data.errors.superheroAlias;
-//            } else {
-//              // if successful, bind success message to message
-//              $scope.message = data.message;
-//            }
-//        });
         $location.path('feedback-topic');
 
     };
@@ -43,26 +25,20 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
     };
 
     $scope.keepCgNumber = function (value) {
-        console.log("value", value);
         $scope.infoProvided.CG_id = value;
     };
 
     $scope.keepAnswerA = function (topicA) {
-        console.log(topicA);
-//        $scope.infoProvided.answers[0].question = "A";
         $scope.infoProvided.questionA = topicA;
         $location.path('goal');
     };
     
     $scope.keepAnswersBandC = function (topicB, topicC) {
-//        $scope.infoProvided.answers[1].question = "B";
         $scope.infoProvided.questionB = topicB;
-//      console.log(
         $scope.infoProvided.questionC = topicC;
     };
 
-    $scope.navigationTopicsBandC = function () {
-        console.log($scope.infoProvided);
+    $scope.navigateTopicsBandC = function () {
         $location.path('goal');
 
     };
@@ -88,7 +64,7 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
 
         $http.post("/save_feedback", data, options).then(
                 function success(data) {
-                    console.log("nice");
+                    console.log(data);
                 },
                 function failure(err) {
                     console.log(err);
@@ -104,7 +80,7 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
     ['ideas3', 5]
   ];
   
-  $scope.limitedIdeas = limitToFilter($scope.ideas, 2);
+  $scope.limitedIdeas = limitToFilter($scope.ideas, 3);
     
 })
   .directive('hcPie', function () {

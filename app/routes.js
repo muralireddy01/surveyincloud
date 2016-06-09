@@ -15,9 +15,10 @@ module.exports = function (app) {
         };
     },
     respond = function (res, data) {
+        //console.log("DATA", data);
         res.setHeader('Content-Type', 'application/json');
-        res.status(data.status);
-        res.send(JSON.stringify(data));
+        res.status(200);
+        res.send(data);
     };
 
     app.post('/create', function (req, res) {
@@ -41,11 +42,15 @@ module.exports = function (app) {
         } else {
             console.log("answers", req.body.url);
             db.create(req.body.url, function(error, creation) {
-                if (creation) {
-                data = buildResponse(201, "Success, short created!");   
-                }
-            respond(res, data);
+                console.log(error);
+                console.log(creation);
             });
+            db.getAll(function(err, docs) {
+                data = JSON.stringify(docs);
+                           respond(res, data);
+            })
+            
+ 
         }
     });
 

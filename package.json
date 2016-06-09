@@ -2,12 +2,14 @@
   "name": "starter-node-angular",
   "main": "server.js",
   "dependencies": {
-    "body-parser": "~1.4.2",
-    "express": "~4.5.1",
+    "body-parser": "^1.4.3",
+    "express": "^4.5.1",
     "highcharts": "^4.2.5",
-    "method-override": "~2.0.2",
+    "method-override": "^2.0.2",
+    "mongodb": "^2.1.18",
+    "mongodb-promise": "0.0.4",
     "mongoose": "4.1.9",
-    "randomstring": "^1.1.3"
+    "randomstring": "^1.1.5"
   },
   "scripts": {
     "start": "node server.js"
