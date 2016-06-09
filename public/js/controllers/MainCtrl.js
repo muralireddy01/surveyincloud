@@ -73,14 +73,14 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         } else if (data.data[i].questionA == 'Leo Messi') {
             $scope.mess += 1;
             $scope.graphPlayers = [
-                ['Ronaldo', $scope.cron],
+                ['CR7', $scope.cron],
                 ['Messi', $scope.mess],
                 ['Ronaldinho', $scope.rona]
             ];
         } else if (data.data[i].questionA == 'Ronaldinho') {
             $scope.rona += 1;
             $scope.graphPlayers = [
-                ['Ronaldo', $scope.cron],
+                ['CR7', $scope.cron],
                 ['Messi', $scope.mess],
                 ['Ronaldinho', $scope.rona]
             ];
