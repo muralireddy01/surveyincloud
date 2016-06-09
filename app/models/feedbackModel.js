@@ -26,14 +26,7 @@ module.exports = {
             console.log("Connected to database");
         });
     },
-    
-    newFeedback : function (url) {
-        return new feedbackModel({"CG_id": url.CG_id,   
-            "feedback": url.feedback,
-            "questionA": url.questionA,
-            "questionB": url.questionB,
-            "questionC": url.questionC});
-    },
+
     create: function (url, callback) {
         this.connect();
         var data = null;
@@ -42,7 +35,7 @@ module.exports = {
             "questionA": url.questionA,
             "questionB": url.questionB,
             "questionC": url.questionC});
-                
+        // TODO: Work with chain promise and getAll (Maybe Q)        
         var promiseSave = newFeedback.save();
         
 //        promiseSave.then(function () {
@@ -53,8 +46,6 @@ module.exports = {
     },
     
     getAll: function (cb) {               
-       // console.log("entra");
-        //var collection = this.db.get().collection('feedback');
 
         feedbackModel.find(function(err, docs) {
             //console.log(docs);
