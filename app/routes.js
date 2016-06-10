@@ -74,8 +74,12 @@ module.exports = function (app) {
         res.redirect('/'); //"http://localhost:3000";
     });
 
-    app.get('/contact', function (req, res) {
-
+    app.get('/graphs', function (req, res) {
+        res.redirect('/'); //"http://localhost:3000";
+    });
+    
+    app.get('/freetext', function (req, res) {
+        res.redirect('/'); //"http://localhost:3000";
     });
 
 };
