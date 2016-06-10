@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Graphs Feedback</title>
+        <title>Charts Feedback</title>
     </head>
     <body ng-app="app" ng-controller="MainController">
         <div class="page-header">
                 <h1>Thank you for the feedback</h1>
             </div>
-                <h3>Pie Chart</h3>        
-                  <draw-bar-chart id="barChartContainer" chart-data="barChartData" style="width: 100%;"></draw-bar-chart>
+                <h3>Best Football Player</h3>  
+    <draw-pie-chart chart-data="data" style="width: 70%";></draw-pie-chart>
         
-    <h3>Pie Chart</h3>
- <draw-pie-chart chart-data="data" style="width: 80%;>
+    <h3>Better?</h3>
+    <draw-pie-chart-better chart-data="dataBetter" style="width: 70%";></draw-pie-chart-better>
+     <h3>Really?</h3>  
+     <draw-pie-chart-better-tv chart-data="betterTv" style="width: 70%";></draw-pie-chart-better-tv>
+<!-- <draw-bar-chart chart-data="barChartData" style="width: 100%;"></draw-bar-chart>-->
  
 <!--        <div class="hc-pie" items="limitedPlayers" style="width: 120%; margin-left: 0px;"></div>-->
          <!--<div class="hc-pie-better" items="limitedBetter" style="width: 120%; margin-left: 0px;"></div>-->

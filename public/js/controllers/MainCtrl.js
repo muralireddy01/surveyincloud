@@ -6,30 +6,42 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         topic : "The topic was very interesting and useful"
     };
 
-    $scope.initData = function () {
-        console.log("CRON", $scope.cron);
+    $scope.initDataPlayer = function () {
         $scope.data = [
             ['CR7', $scope.cron],
             ['Wind', $scope.mess],
             ['Natural', $scope.rona]
         ];
-
     }
-    $scope.loadChart = function () {
-
-        $scope.barChartData = [{
-                name: 'null',
-                data: [60],
-                borderRadius: 0,
-                color: "gray"
-            }, {
-                name: 'Values',
-                data: [40],
-                color: "green",
-                borderRadius: 0
-            }];
+    $scope.initDataBetter = function () {
+        $scope.dataBetter = [
+            ['100 chicken sized elephants', $scope.oneHundred],
+            ['1 elephant sized chicken', $scope.oneElephant]
+        ];
+    };
+    
+    $scope.initDataBetterTv = function () {
+        $scope.betterTv = [
+            ['Ant', $scope.ant],
+            ['Dec', $scope.dec]
+        ];
     }
-    $scope.loadChart();
+    
+//    $scope.loadChart = function () {
+//
+//        $scope.barChartData = [{
+//                name: 'null',
+//                data: [60],
+//                borderRadius: 0,
+//                color: "gray"
+//            }, {
+//                name: 'Values',
+//                data: [40],
+//                color: "green",
+//                borderRadius: 0
+//            }];
+//    }
+//    $scope.loadChart();
 
 
     $scope.infoProvided = {
@@ -100,12 +112,7 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
             }
             long--;
         }
-        $scope.initData();
-//        $scope.graphPlayers = [
-//            ['CR7', $scope.cron],
-//            ['Messi', $scope.mess],
-//            ['Ronaldinho', $scope.rona]
-//        ];
+        $scope.initDataPlayer();
     };
 
     var calculateStatsBetter = function () {
@@ -118,26 +125,20 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
             }
             long--;
         }
-        $scope.graphBetter = [
-            ['100 chicken sized elephants', $scope.oneHundred],
-            ['1 elephant sized chicken', $scope.oneElephant]
-        ];
+        $scope.initDataBetter();
     };
 
     var calculateStatsBetterTv = function () {
         var long = $scope.betterTv.length - 1;
         while (long >= 0) {
-            if ($scope.better[long] == 'Ant') {
+            if ($scope.betterTv[long] == 'Ant') {
                 $scope.ant += 1;
-            } else if ($scope.better[long] == 'Dec') {
+            } else if ($scope.betterTv[long] == 'Dec') {
                 $scope.dec += 1;
             }
             long--;
         }
-        $scope.graphBetterTv = [
-            ['Ant', $scope.ant],
-            ['Dec', $scope.dec]
-        ];
+        $scope.initDataBetterTv();
     };
 
     // TODO? Add Lodash to get less lines anyway I love Java style
@@ -180,9 +181,6 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
                 }
         );
         $timeout(function () {
-//            $scope.limitedPlayers = limitToFilter($scope.graphPlayers, 3);
-//            $scope.limitedBetter = limitToFilter($scope.graphBetter, 2);
-//            $scope.limitedBetterTv = limitToFilter($scope.graphBetterTv, 2);
             $location.path('/graphs');
         }, 1500);
     };
@@ -241,104 +239,118 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
             }
         }
     };
+    //TODO: move Directive to right path and refactor?
+}).directive('drawPieChartBetter', function () {
 
-})
-        .directive('drawBarChart', function () {
-            return {
-                restrict: 'E',
-                scope: {
-                    chartData: "="
-                },
-                link: function (scope, element, attrs) {
+    return {
+        restrict: 'E',
+        scope: {
+            chartData: "="
+        },
+        link: function (scope, element, attrs) {
 
-                    scope.$watch('chartData', function (newVal, oldVal) {
-                        if (newVal) {
-                            drawPlot();
-                        }
-                    }, true);
-
-                    var drawPlot = function () {
-                        var chart = new Highcharts.Chart({
-                            chart: {
-                                type: 'column',
-                                renderTo: element[0],
-                                marginRight: 50,
-                                events: {
-                                }
-                            },
-                            title: {
-                                text: 'Test Scores',
-                                style: {
-                                    color: 'black',
-                                    fontWeight: '700',
-                                    fontFamily: 'Arial',
-                                    fontSize: 20
-                                }
-                            },
-                            xAxis: {
-                                categories: [],
-                                title: {
-                                    text: null
-                                },
-                                gridLineWidth: 0,
-                                minorGridLineWidth: 0,
-                                labels: {
-                                    style: {
-                                        color: 'black',
-                                        fontWeight: '700',
-                                        fontFamily: 'Arial',
-                                        fontSize: 11,
-                                        width: 90
-                                    }
-                                }
-                            },
-                            yAxis: {
-                                min: 0,
-                                max: 100,
-                                gridLineWidth: 0,
-                                minorGridLineWidth: 0,
-                                labels: {
-                                    enabled: false
-                                },
-                                title: {
-                                    text: null
-                                }
-                            },
-                            tooltip: {
-                                valueSuffix: ' million'
-                            },
-                            plotOptions: {
-                                series: {
-                                    stacking: 'percent'
-                                },
-                                bar: {
-                                    dataLabels: {
-                                        enabled: false
-                                    }
-                                }
-                            },
-                            legend: {
-                                enabled: false,
-                                layout: 'vertical',
-                                align: 'right',
-                                verticalAlign: 'bottom',
-                                x: -40,
-                                y: 100,
-                                floating: true,
-                                borderWidth: 1,
-                                backgroundColor: '#FFFFFF',
-                                shadow: true
-                            },
-                            credits: {
-                                enabled: false
-                            },
-                            series: scope.chartData
-                        });
-                    }
+            scope.$watch('chartData', function (newVal, oldVal) {
+                if (newVal) {
+                    drawPlot();
                 }
-            };
+            }, true);
 
-        });
+            var drawPlot = function () {
+                var chart;
+                chart = new Highcharts.Chart({
+                    chart: {
+                        renderTo: element[0],
+                        margin: [0, 0, 0, 0],
+                        spacingTop: 0,
+                        spacingBottom: 0,
+                        spacingLeft: 0,
+                        spacingRight: 0
+                    },
+                    title: {
+                        text: null
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                        percentageDecimals: 1
+                    },
+                    plotOptions: {
+                        pie: {
+                            size: '100%',
+                            dataLabels: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    series: [{
+                            type: 'pie',
+                            name: 'Browser share',
+                            data: scope.chartData
+                        }]
+                });
+
+
+            }
+        }
+    };
+}).directive('drawPieChartBetterTv', function () {
+
+    return {
+        restrict: 'E',
+        scope: {
+            chartData: "="
+        },
+        link: function (scope, element, attrs) {
+
+            scope.$watch('chartData', function (newVal, oldVal) {
+                if (newVal) {
+                    drawPlot();
+                }
+            }, true);
+
+            var drawPlot = function () {
+                var chart;
+                chart = new Highcharts.Chart({
+                    chart: {
+                        renderTo: element[0],
+                        margin: [0, 0, 0, 0],
+                        spacingTop: 0,
+                        spacingBottom: 0,
+                        spacingLeft: 0,
+                        spacingRight: 0
+                    },
+                    title: {
+                        text: null
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                        percentageDecimals: 1
+                    },
+                    plotOptions: {
+                        pie: {
+                            size: '100%',
+                            dataLabels: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    series: [{
+                            type: 'pie',
+                            name: 'Browser share',
+                            data: scope.chartData
+                        }]
+                });
+
+
+            }
+        }
+    };
+});
 //TODO: move Directive to right path and refactorize??
 //}).directive('hcPie', function () {
 //    return {
