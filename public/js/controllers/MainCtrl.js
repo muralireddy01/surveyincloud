@@ -2,9 +2,7 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
 
     $scope.tagline = 'Enter your CG Number';
 
-    $scope.feedback = function () {
-        topic : "The topic was very interesting and useful"
-    };
+    $scope.taglineFeedback = 'Thank you for your feedback';
 
     $scope.initDataPlayer = function () {
         $scope.data = [
@@ -98,6 +96,32 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
     $scope.keepFeeText = function (freetext) {
         $scope.infoProvided.feedback = freetext;
     };
+    
+    $scope.seeResults = function () {
+        $scope.taglineFeedback = '';
+        var data = $httpParamSerializerJQLike({
+            url: null
+        });
+        var options = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+
+        $http.post("/save_feedback", data, options).then(
+                function success(data) {
+                    console.log("DATA", data);
+                    $scope.createObjetcsFromJSON($scope, data);
+                },
+                function failure(err) {
+                    console.log(err);
+                    $scope.errormsg = "Missing URL";
+                }
+        );
+        $timeout(function () {
+            $location.path('/graphs');
+        }, 1500);
+    };
 
     var calculateStatsPlayers = function () {
         var long = $scope.players.length - 1;
@@ -160,7 +184,6 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
     };
 
     $scope.submitFeedback = function () {
-        //console.log($scope.infoProvided);
         var data = $httpParamSerializerJQLike({
             url: $scope.infoProvided
         });
