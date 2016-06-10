@@ -7,8 +7,8 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
     $scope.initDataPlayer = function () {
         $scope.data = [
             ['CR7', $scope.cron],
-            ['Wind', $scope.mess],
-            ['Natural', $scope.rona]
+            ['Messi', $scope.mess],
+            ['Ronaldinho', $scope.rona]
         ];
     }
     $scope.initDataBetter = function () {
