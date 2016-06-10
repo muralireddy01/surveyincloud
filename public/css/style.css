@@ -8,6 +8,16 @@ textarea {
   font-size: 16px;
 }
 
+.mine {
+    font-size: 16px;
+    margin-left: 60%;
+    /*margin-top: 0em;*/
+}
+
+.highcharts-series highcharts-series-0 highcharts-tracker {
+    width: 100%;
+}
+
 .h1, h1 {
     font-size: 2em;  
 }

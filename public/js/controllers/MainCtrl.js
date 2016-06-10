@@ -6,6 +6,32 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         topic : "The topic was very interesting and useful"
     };
 
+    $scope.initData = function () {
+        console.log("CRON", $scope.cron);
+        $scope.data = [
+            ['CR7', $scope.cron],
+            ['Wind', $scope.mess],
+            ['Natural', $scope.rona]
+        ];
+
+    }
+    $scope.loadChart = function () {
+
+        $scope.barChartData = [{
+                name: 'null',
+                data: [60],
+                borderRadius: 0,
+                color: "gray"
+            }, {
+                name: 'Values',
+                data: [40],
+                color: "green",
+                borderRadius: 0
+            }];
+    }
+    $scope.loadChart();
+
+
     $scope.infoProvided = {
         "questionA": null,
         "questionB": null,
@@ -14,11 +40,16 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         "CG_id": null
     };
 
-    $scope.graphPlayers = [
-        ['CR7', 0],
-        ['Messi', 0],
-        ['Ronaldinho', 0]
-    ];
+    $scope.players = [];
+    $scope.better = [];
+    $scope.betterTv = [];
+    $scope.cron = 0;
+    $scope.mess = 0;
+    $scope.rona = 0;
+    $scope.oneHundred = 0;
+    $scope.oneElephant = 0;
+    $scope.ant = 0;
+    $scope.dec = 0;
 
     $scope.processForm = function (nextView) {
         $location.path('feedback-topic');
@@ -55,39 +86,76 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
     $scope.keepFeeText = function (freetext) {
         $scope.infoProvided.feedback = freetext;
     };
-    
-    $scope.cron = 0;
-    $scope.mess = 0;
-    $scope.rona = 0;
-    // TODO? Add Lodash to get less lines anyway I love Java style
-    $scope.calculatePlayers = function ($scope, data) {
 
-    for (var i = 0; i < data.data.length; i++) {
-        if (data.data[i].questionA == 'Cristiano Ronaldo') {
-            $scope.cron += 1;
-            $scope.graphPlayers = [
-                ['CR7', $scope.cron],
-                ['Messi', $scope.mess],
-                ['Ronaldinho', $scope.rona]
-            ];
-        } else if (data.data[i].questionA == 'Leo Messi') {
-            $scope.mess += 1;
-            $scope.graphPlayers = [
-                ['CR7', $scope.cron],
-                ['Messi', $scope.mess],
-                ['Ronaldinho', $scope.rona]
-            ];
-        } else if (data.data[i].questionA == 'Ronaldinho') {
-            $scope.rona += 1;
-            $scope.graphPlayers = [
-                ['CR7', $scope.cron],
-                ['Messi', $scope.mess],
-                ['Ronaldinho', $scope.rona]
-            ];
+    var calculateStatsPlayers = function () {
+        var long = $scope.players.length - 1;
+        while (long >= 0) {
+
+            if ($scope.players[long] == 'Cristiano Ronaldo') {
+                $scope.cron += 1;
+            } else if ($scope.players[long] == 'Leo Messi') {
+                $scope.mess += 1;
+            } else if ($scope.players[long] == 'Ronaldinho') {
+                $scope.rona += 1;
+            }
+            long--;
         }
+        $scope.initData();
+//        $scope.graphPlayers = [
+//            ['CR7', $scope.cron],
+//            ['Messi', $scope.mess],
+//            ['Ronaldinho', $scope.rona]
+//        ];
+    };
+
+    var calculateStatsBetter = function () {
+        var long = $scope.better.length - 1;
+        while (long >= 0) {
+            if ($scope.better[long] == '100 chicken sized elephants') {
+                $scope.oneHundred += 1;
+            } else if ($scope.better[long] == '1 elephant sized chicken') {
+                $scope.oneElephant += 1;
+            }
+            long--;
+        }
+        $scope.graphBetter = [
+            ['100 chicken sized elephants', $scope.oneHundred],
+            ['1 elephant sized chicken', $scope.oneElephant]
+        ];
+    };
+
+    var calculateStatsBetterTv = function () {
+        var long = $scope.betterTv.length - 1;
+        while (long >= 0) {
+            if ($scope.better[long] == 'Ant') {
+                $scope.ant += 1;
+            } else if ($scope.better[long] == 'Dec') {
+                $scope.dec += 1;
+            }
+            long--;
+        }
+        $scope.graphBetterTv = [
+            ['Ant', $scope.ant],
+            ['Dec', $scope.dec]
+        ];
+    };
+
+    // TODO? Add Lodash to get less lines anyway I love Java style
+    $scope.createObjetcsFromJSON = function ($scope, data) {
+        console.log("VERDAD", (data.data.length));
+        var long = data.data.length - 1;  // cache length 
+        var i = long;
+        while (i >= 0) {
+            $scope.players.push(data.data[i].questionA);
+            $scope.better.push(data.data[i].questionB);
+            $scope.betterTv.push(data.data[i].questionC);
+            i--;
+        }
+        console.log("COMING");
+        calculateStatsPlayers();
+        calculateStatsBetter();
+        calculateStatsBetterTv();
         $scope.$apply;
-        }
-        console.log("DATA",$scope.graphPlayers);
     };
 
     $scope.submitFeedback = function () {
@@ -100,86 +168,335 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         };
-            
+
         $http.post("/save_feedback", data, options).then(
                 function success(data) {
-                    console.log("DATA",data);
-                    $scope.calculatePlayers($scope, data);
+                    console.log("DATA", data);
+                    $scope.createObjetcsFromJSON($scope, data);
                 },
                 function failure(err) {
                     console.log(err);
                     $scope.errormsg = "Missing URL";
                 }
         );
-        $timeout(function() {
-            $scope.limitedIdeas = limitToFilter($scope.graphPlayers, 3);
+        $timeout(function () {
+//            $scope.limitedPlayers = limitToFilter($scope.graphPlayers, 3);
+//            $scope.limitedBetter = limitToFilter($scope.graphBetter, 2);
+//            $scope.limitedBetterTv = limitToFilter($scope.graphBetterTv, 2);
             $location.path('/graphs');
-        }, 1500);         
+        }, 1500);
+    };
+}).directive('drawPieChart', function () {
+
+    return {
+        restrict: 'E',
+        scope: {
+            chartData: "="
+        },
+        link: function (scope, element, attrs) {
+
+            scope.$watch('chartData', function (newVal, oldVal) {
+                if (newVal) {
+                    drawPlot();
+                }
+            }, true);
+
+            var drawPlot = function () {
+                var chart;
+                chart = new Highcharts.Chart({
+                    chart: {
+                        renderTo: element[0],
+                        margin: [0, 0, 0, 0],
+                        spacingTop: 0,
+                        spacingBottom: 0,
+                        spacingLeft: 0,
+                        spacingRight: 0
+                    },
+                    title: {
+                        text: null
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                        percentageDecimals: 1
+                    },
+                    plotOptions: {
+                        pie: {
+                            size: '100%',
+                            dataLabels: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    series: [{
+                            type: 'pie',
+                            name: 'Browser share',
+                            data: scope.chartData
+                        }]
+                });
+
+
+            }
+        }
     };
 
-//    $scope.ideas = [
-//        ['ideas1', $scope.cron],
-//        ['ideas2', $scope.mess],
-//        ['ideas3', $scope.rona]
-//    ];
-
-    
-    
-    
-//    $scope.limitedIdeas = limitToFilter($scope.graphPlayers, 3);
-
-    //TODO: move Directive to right path
-}).directive('hcPie', function () {
+})
+        .directive('drawBarChart', function () {
             return {
-                restrict: 'C',
-                replace: true,
+                restrict: 'E',
                 scope: {
-                    items: '='
+                    chartData: "="
                 },
-                controller: function ($scope, $element, $attrs) {
-
-                },
-                template: '<div id="container" style="margin: 0 auto">not working</div>',
                 link: function (scope, element, attrs) {
-                    var chart = new Highcharts.Chart({
-                        chart: {
-                            renderTo: 'container',
-                            plotBackgroundColor: null,
-                            plotBorderWidth: null,
-                            plotShadow: false
-                        },
-                        title: {
-                            text: ''
-                        },
-                        tooltip: {
-                            pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-//                            percentageDecimals: 0
-                        },
-                        plotOptions: {
-                            pie: {
-                                allowPointSelect: true,
-                                cursor: 'pointer',
-                                dataLabels: {
-                                    enabled: true,
-                                    color: '#000000',
-                                    connectorColor: '#000000',
-                                    formatter: function () {
-                                        return '<b>' + this.point.name + '</b>: ' + this.percentage.toFixed(2) + ' %';
+
+                    scope.$watch('chartData', function (newVal, oldVal) {
+                        if (newVal) {
+                            drawPlot();
+                        }
+                    }, true);
+
+                    var drawPlot = function () {
+                        var chart = new Highcharts.Chart({
+                            chart: {
+                                type: 'column',
+                                renderTo: element[0],
+                                marginRight: 50,
+                                events: {
+                                }
+                            },
+                            title: {
+                                text: 'Test Scores',
+                                style: {
+                                    color: 'black',
+                                    fontWeight: '700',
+                                    fontFamily: 'Arial',
+                                    fontSize: 20
+                                }
+                            },
+                            xAxis: {
+                                categories: [],
+                                title: {
+                                    text: null
+                                },
+                                gridLineWidth: 0,
+                                minorGridLineWidth: 0,
+                                labels: {
+                                    style: {
+                                        color: 'black',
+                                        fontWeight: '700',
+                                        fontFamily: 'Arial',
+                                        fontSize: 11,
+                                        width: 90
                                     }
                                 }
-                            }
-                        },
-                        series: [{
-                                type: 'pie',
-                                name: 'Football Players',
-                                data: scope.items
-                            }]
-                    });
-                        scope.$watch("items", function (newValue) {
-                            console.log("NEWVALUE", newValue);
-                            chart.series[0].setData(newValue, true);
-                        }, true);
+                            },
+                            yAxis: {
+                                min: 0,
+                                max: 100,
+                                gridLineWidth: 0,
+                                minorGridLineWidth: 0,
+                                labels: {
+                                    enabled: false
+                                },
+                                title: {
+                                    text: null
+                                }
+                            },
+                            tooltip: {
+                                valueSuffix: ' million'
+                            },
+                            plotOptions: {
+                                series: {
+                                    stacking: 'percent'
+                                },
+                                bar: {
+                                    dataLabels: {
+                                        enabled: false
+                                    }
+                                }
+                            },
+                            legend: {
+                                enabled: false,
+                                layout: 'vertical',
+                                align: 'right',
+                                verticalAlign: 'bottom',
+                                x: -40,
+                                y: 100,
+                                floating: true,
+                                borderWidth: 1,
+                                backgroundColor: '#FFFFFF',
+                                shadow: true
+                            },
+                            credits: {
+                                enabled: false
+                            },
+                            series: scope.chartData
+                        });
+                    }
                 }
-            }
+            };
+
         });
-        
+//TODO: move Directive to right path and refactorize??
+//}).directive('hcPie', function () {
+//    return {
+//        restrict: 'C',
+//        replace: true,
+//        scope: {
+//            items: '='
+//        },
+//        controller: function ($scope, $element, $attrs) {
+//
+//        },
+//        template: '<div id="container" style="margin: 0 auto">not working</div>',
+//        link: function (scope, element, attrs) {
+//            var chart = new Highcharts.Chart({
+//                chart: {
+//                    renderTo: 'container',
+//                    plotBackgroundColor: null,
+//                    plotBorderWidth: null,
+//                    plotShadow: false
+//                },
+//                title: {
+//                    text: ''
+//                },
+//                tooltip: {
+//                    pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+////                            percentageDecimals: 0
+//                },
+//                plotOptions: {
+//                    pie: {
+//                        allowPointSelect: true,
+//                        cursor: 'pointer',
+//                        dataLabels: {
+//                            enabled: true,
+//                            color: '#000000',
+//                            connectorColor: '#000000',
+//                            formatter: function () {
+//                                return '<b>' + this.point.name + '</b>: ' + this.percentage.toFixed(2) + ' %';
+//                            }
+//                        }
+//                    }
+//                },
+//                series: [{
+//                        type: 'pie',
+//                        name: 'Football Players',
+//                        data: scope.items
+//                    }]
+//            });
+//            scope.$watch("items", function (newValue) {
+//                console.log("NEWVALUE", newValue);
+//                chart.series[0].setData(newValue, true);
+//            }, true);
+//        }
+//    }
+//});
+//   .directive('hcPieBetter', function () {
+//    return {
+//        restrict: 'C',
+//        replace: true,
+//        scope: {
+//            items: '='
+//        },
+//        controller: function ($scope, $element, $attrs) {
+//
+//        },
+//        template: '<div id="container" style="margin: 0 auto">not working</div>',
+//        link: function (scope, element, attrs) {
+//            var chart = new Highcharts.Chart({
+//                chart: {
+//                    renderTo: 'container',
+//                    plotBackgroundColor: null,
+//                    plotBorderWidth: null,
+//                    plotShadow: false
+//                },
+//                title: {
+//                    text: ''
+//                },
+//                tooltip: {
+//                    pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+////                            percentageDecimals: 0
+//                },
+//                plotOptions: {
+//                    pie: {
+//                        allowPointSelect: true,
+//                        cursor: 'pointer',
+//                        dataLabels: {
+//                            enabled: true,
+//                            color: '#000000',
+//                            connectorColor: '#000000',
+//                            formatter: function () {
+//                                return '<b>' + this.point.name + '</b>: ' + this.percentage.toFixed(2) + ' %';
+//                            }
+//                        }
+//                    }
+//                },
+//                series: [{
+//                        type: 'pie',
+//                        name: 'Better',
+//                        data: scope.items
+//                    }]
+//            });
+//            scope.$watch("items", function (newValue) {
+//                console.log("NEWVALUE", newValue);
+//                chart.series[0].setData(newValue, true);
+//            }, true);
+//        }
+//    }
+//});
+//        .directive('hcPieBetterTV', function () {
+//    return {
+//        restrict: 'C',
+//        replace: true,
+//        scope: {
+//            items: '='
+//        },
+//        controller: function ($scope, $element, $attrs) {
+//
+//        },
+//        template: '<div id="container" style="margin: 0 auto">not working</div>',
+//        link: function (scope, element, attrs) {
+//            var chart = new Highcharts.Chart({
+//                chart: {
+//                    renderTo: 'container',
+//                    plotBackgroundColor: null,
+//                    plotBorderWidth: null,
+//                    plotShadow: false
+//                },
+//                title: {
+//                    text: ''
+//                },
+//                tooltip: {
+//                    pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+////                            percentageDecimals: 0
+//                },
+//                plotOptions: {
+//                    pie: {
+//                        allowPointSelect: true,
+//                        cursor: 'pointer',
+//                        dataLabels: {
+//                            enabled: true,
+//                            color: '#000000',
+//                            connectorColor: '#000000',
+//                            formatter: function () {
+//                                return '<b>' + this.point.name + '</b>: ' + this.percentage.toFixed(2) + ' %';
+//                            }
+//                        }
+//                    }
+//                },
+//                series: [{
+//                        type: 'pie',
+//                        name: 'Football Players',
+//                        data: scope.items
+//                    }]
+//            });
+//            scope.$watch("items", function (newValue) {
+//                console.log("NEWVALUE", newValue);
+//                chart.series[0].setData(newValue, true);
+//            }, true);
+//        }
+//    }
+//});
+//        

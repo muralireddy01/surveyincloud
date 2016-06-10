@@ -7,16 +7,23 @@
         <div class="page-header">
                 <h1>Thank you for the feedback</h1>
             </div>
-        <div class="hc-pie" items="limitedIdeas" style="width: 120%; margin-left: 0px;"></div>
-        </div>
-        <div class="page-header">
-            <h1>Results Feedback</h1>
-        </div>
-
-        <div class="alert alert-danger ng-hide" role="alert" ng-show="errormsg">
-            <button type="button" class="close" aria-label="Close" ng-click="hideerr()"><span aria-hidden="true">&times;</span></button>
-            <strong>Error!</strong> {{ errormsg}}
-        </div>
+                <h3>Pie Chart</h3>        
+                  <draw-bar-chart id="barChartContainer" chart-data="barChartData" style="width: 100%;"></draw-bar-chart>
+        
+    <h3>Pie Chart</h3>
+ <draw-pie-chart chart-data="data" style="width: 80%;>
+ 
+<!--        <div class="hc-pie" items="limitedPlayers" style="width: 120%; margin-left: 0px;"></div>-->
+         <!--<div class="hc-pie-better" items="limitedBetter" style="width: 120%; margin-left: 0px;"></div>-->
+<!--        </div>
+-->       
+        <!--<div class="hc-pieBetterTv" items="limitedBetterTv" style="width: 120%; margin-left: 0px;"></div>-->
+      
+            
+      
+       <button ng-click="keepCgNumber(value)" class="btn btn-success btn-lg btn-block">
+            <span class="glyphicon glyphicon-flash"></span> Next
+        </button>
         <footer class="footer">
             <div class="container">
                 <p class="text-muted"></p>
