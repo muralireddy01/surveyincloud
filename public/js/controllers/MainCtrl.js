@@ -249,7 +249,8 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
                             size: '100%',
                             dataLabels: {
                                 enabled: false
-                            }
+                            },
+                    showInLegend: true
                         }
                     },
                     series: [{
@@ -306,7 +307,8 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
                             size: '100%',
                             dataLabels: {
                                 enabled: false
-                            }
+                            },
+                    showInLegend: true
                         }
                     },
                     series: [{
@@ -362,7 +364,8 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
                             size: '100%',
                             dataLabels: {
                                 enabled: false
-                            }
+                            },
+                    showInLegend: true
                         }
                     },
                     series: [{
