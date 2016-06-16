@@ -241,7 +241,7 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
                     },
                     tooltip: {
                         formatter: function () {
-                             return this.point.name + ': <b>' + Highcharts.numberFormat(this.percentage, 1) + '%</b>';
+                             return this.point.name + ': <b>' + Highcharts.numberFormat(this.percentage, 0) + '%</b>';
                                    }
                     },
                     plotOptions: {
@@ -249,7 +249,8 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
                             size: '100%',
                             dataLabels: {
                                 enabled: false
-                            }
+                            },
+                              showInLegend: true
                         }
                     },
                     series: [{
