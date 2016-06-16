@@ -297,8 +297,9 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
                         enabled: false
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-                        percentageDecimals: 1
+                        formatter: function () {
+                   return this.point.name + ': <b>' + Highcharts.numberFormat(this.percentage, 1) + '%</b>';
+                         }
                     },
                     plotOptions: {
                         pie: {
@@ -352,8 +353,9 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
                         enabled: false
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-                        percentageDecimals: 1
+                        formatter: function () {
+                        return this.point.name + ': <b>' + Highcharts.numberFormat(this.percentage, 1) + '%</b>';
+                       }
                     },
                     plotOptions: {
                         pie: {
