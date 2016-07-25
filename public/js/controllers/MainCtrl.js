@@ -28,22 +28,6 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         ];
     }
     
-//    $scope.loadChart = function () {
-//
-//        $scope.barChartData = [{
-//                name: 'null',
-//                data: [60],
-//                borderRadius: 0,
-//                color: "gray"
-//            }, {
-//                name: 'Values',
-//                data: [40],
-//                color: "green",
-//                borderRadius: 0
-//            }];
-//    }
-//    $scope.loadChart();
-
 
     $scope.infoProvided = {
         "questionA": null,
@@ -59,8 +43,11 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
     $scope.cron = 0;
     $scope.mess = 0;
     $scope.rona = 0;
-    $scope.oneHundred = 0;
-    $scope.oneElephant = 0;
+    $scope.choice1 = 0;
+    $scope.choice2 = 0;
+    $scope.choice3 = 0;
+    $scope.choice4 = 0;
+    $scope.choice5 = 0;
     $scope.ant = 0;
     $scope.dec = 0;
 
