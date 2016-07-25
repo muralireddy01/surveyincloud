@@ -1,3 +1,3 @@
 module.exports = {
-	url :  'mongodb://mreddy:mreddy123@ds029635.mlab.com:29635/proto_tennis'        
+	url :  'mongodb://elrolete:alberdi69@ds013951.mlab.com:13951/proto_tennis'        
 }
