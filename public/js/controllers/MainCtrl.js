@@ -2,7 +2,7 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
 
     $scope.tagline = 'Enter your name';
 
-    $scope.taglineFeedback = 'Thank you for your feedback';
+    $scope.taglineFeedback = 'Thankss you for your feedback';
 
     $scope.initDataPlayer = function () {
         $scope.data = [
