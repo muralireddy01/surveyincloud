@@ -6,33 +6,36 @@
         <form ng-submit="submitGoal('nextview')">
 
             <div class="page-header">
-                <h1>Topic Feedback</h1>
+                <h1>July Cascade</h1>
             </div>
 
             <div class="radio">
-                <label>What is better??</label>
+                <label>How do you rate this event?</label>
                 <label>
-                    <input type="radio" ng-model="topicB" value="100 chicken sized elephants">100 chicken sized elephants
-                </label>
-            </div>
-
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="topicB" value="1 elephant sized chicken">1 elephant sized chicken
-                </label>
-            </div>
-            <h1>And..the most important question!!</h1>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="topicC" value="Ant">Ant
+                    <input type="radio" ng-model="topicB" value="1">Poor
                 </label>
             </div>
 
             <div class="radio">
                 <label>
-                    <input type="radio" ng-model="topicC" value="Dec">Dec
+                    <input type="radio" ng-model="topicB" value="2">Fair
                 </label>
             </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="topicB" value="3">Average
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="topicB" value="4">Good
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="topicB" value="5">Excellent
+                </label>
+            </div>            
 
             <button ng-click="keepAnswersBandC(topicB, topicC)" class="btn btn-success btn-lg btn-block" 
                     ng-disabled="!topicB || !topicC" />
