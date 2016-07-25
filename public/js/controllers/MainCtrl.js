@@ -1,6 +1,6 @@
 angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function ($scope, $sce, $http, $location, $httpParamSerializerJQLike, $timeout, limitToFilter) {
 
-    $scope.tagline = 'Enter your CG Number';
+    $scope.tagline = 'Enter your name';
 
     $scope.taglineFeedback = 'Thank you for your feedback';
 
