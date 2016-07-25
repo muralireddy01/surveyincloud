@@ -6,9 +6,9 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
 
     $scope.initDataPlayer = function () {
         $scope.data = [
-            ['CR7', $scope.cron],
-            ['Messi', $scope.mess],
-            ['Ronaldinho', $scope.rona]
+            ['Matheson House', $scope.cron],
+            ['Plaza', $scope.mess],
+            ['International House', $scope.rona]
         ];
     }
     $scope.initDataBetter = function () {
@@ -127,11 +127,11 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         var long = $scope.players.length - 1;
         while (long >= 0) {
 
-            if ($scope.players[long] == 'Cristiano Ronaldo') {
+            if ($scope.players[long] == 'Matheson') {
                 $scope.cron += 1;
-            } else if ($scope.players[long] == 'Leo Messi') {
+            } else if ($scope.players[long] == 'Plaza') {
                 $scope.mess += 1;
-            } else if ($scope.players[long] == 'Ronaldinho') {
+            } else if ($scope.players[long] == 'IntHouse') {
                 $scope.rona += 1;
             }
             long--;
