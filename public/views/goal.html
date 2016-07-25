@@ -12,33 +12,33 @@
             <div class="radio">
                 <label>How do you rate this event?</label>
                 <label>
-                    <input type="radio" ng-model="topicB" value="1">Poor
+                    <input type="radio" ng-model="topicB" value="1">Highly Informative
                 </label>
             </div>
 
             <div class="radio">
                 <label>
-                    <input type="radio" ng-model="topicB" value="2">Fair
+                    <input type="radio" ng-model="topicB" value="2">Interesting
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" ng-model="topicB" value="3">Average
+                    <input type="radio" ng-model="topicB" value="3">Sitting on the fence
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" ng-model="topicB" value="4">Good
+                    <input type="radio" ng-model="topicB" value="4">Not relevant to me
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" ng-model="topicB" value="5">Excellent
+                    <input type="radio" ng-model="topicB" value="5">Not the best use of my time
                 </label>
             </div>            
 
             <button ng-click="keepAnswersBandC(topicB, topicC)" class="btn btn-success btn-lg btn-block" 
-                    ng-disabled="!topicB || !topicC" />
+                    ng-disabled="!topicB" />
             <span class="glyphicon glyphicon-flash"></span> Next
             
         </button>
