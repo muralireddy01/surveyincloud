@@ -13,8 +13,10 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
     }
     $scope.initDataBetter = function () {
         $scope.dataBetter = [
-            ['100 chicken sized elephants', $scope.oneHundred],
-            ['1 elephant sized chicken', $scope.oneElephant]
+            ['Highly Informative', $scope.choice1],
+            ['Interesting', $scope.choice2]
+            ['Interesting', $scope.choice2]
+            ['Interesting', $scope.choice2]
         ];
     };
     
