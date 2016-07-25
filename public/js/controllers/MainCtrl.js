@@ -14,9 +14,10 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
     $scope.initDataBetter = function () {
         $scope.dataBetter = [
             ['Highly Informative', $scope.choice1],
-            ['Interesting', $scope.choice2]
-            ['Interesting', $scope.choice2]
-            ['Interesting', $scope.choice2]
+            ['Interesting', $scope.choice2],
+            ['Sitting on the fence', $scope.choice3],
+            ['Not relevant to me', $scope.choice4],
+            ['Not the best use of my time', $scope.choice5]
         ];
     };
     
@@ -144,11 +145,18 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
     var calculateStatsBetter = function () {
         var long = $scope.better.length - 1;
         while (long >= 0) {
-            if ($scope.better[long] == '100 chicken sized elephants') {
-                $scope.oneHundred += 1;
-            } else if ($scope.better[long] == '1 elephant sized chicken') {
-                $scope.oneElephant += 1;
+            if ($scope.better[long] == '11') {
+                $scope.choice1 += 1;
+            } else if ($scope.better[long] == '2') {
+                $scope.choice2 += 1;
+            } else if ($scope.better[long] == '3') {
+                $scope.choice3 += 1;
+            } else if ($scope.better[long] == '4') {
+                $scope.choice4 += 1;
+            } else if ($scope.better[long] == '5') {
+                $scope.choice5 += 1;
             }
+            
             long--;
         }
         $scope.initDataBetter();
