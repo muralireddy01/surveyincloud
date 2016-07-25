@@ -9,10 +9,10 @@
         <p>{{ tagline }}</p>
 
         <br/>
-        <input type="text" name="cgnumber" ng-model="value" required>
-        <div ng-messages="myForm.cgnumber.$error">
+        <input type="text" name="cgnumber" ng-model="value" >
+        <!--<div ng-messages="myForm.cgnumber.$error">
             <div ng-message="required">This field is required</div>
-        </div>
+        </div>-->
         </br>
         <button ng-click="keepCgNumber(value)" class="btn btn-success btn-lg btn-block">
             <span class="glyphicon glyphicon-flash"></span> Next
