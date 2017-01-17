@@ -1,6 +1,6 @@
 angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function ($scope, $sce, $http, $location, $httpParamSerializerJQLike, $timeout, limitToFilter) {
 
-    $scope.tagline = 'Enter your name';
+    $scope.tagline = 'Please enter your name or net ID';
 
     $scope.taglineFeedback = 'Thankss you for your feedback';
 
@@ -35,6 +35,7 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         "questionC": null,
         "feedback": null,
         "CG_id": null
+        "event": null
     };
 
     $scope.players = [];
@@ -60,8 +61,9 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         $location.path('feedback-topic');
     };
 
-    $scope.keepCgNumber = function (value) {
-        $scope.infoProvided.CG_id = value;
+    $scope.submitCGNum = function (netId, event) {
+        $scope.infoProvided.CG_id = netId;
+        $scope.infoProvided.event = event;
     };
 
     $scope.keepAnswerA = function (topicA) {
