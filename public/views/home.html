@@ -10,14 +10,18 @@
 
         <br/>
         <input type="text" name="netId" ng-model="netId" >
-        <br/><i>Leave blank if you'd prefer to remain anonymous</i>
+        <br/><br/><i>Leave blank if you'd prefer to remain anonymous</i>
         <br/>
+        <br/>
+        <br/>
+        <br/>
+        <p>Which event did you attend?</p>
         <br/>
         <input type="text" name="event" ng-model="event" >
 
 
         </br> </br>
-        <button ng-click="submitCGNum(netId)" class="btn btn-success btn-lg btn-block">
+        <button ng-click="submitCGNum(netId, event)" class="btn btn-success btn-lg btn-block">
             <span class="glyphicon glyphicon-flash"></span> Next
         </button>
     </form>

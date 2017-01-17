@@ -35,7 +35,7 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         "questionC": null,
         "feedback": null,
         "CG_id": null
-//        "event": null
+        "event": null
     };
 
     $scope.players = [];
@@ -61,9 +61,9 @@ angular.module('MainCtrl', ['ngMaterial']).controller('MainController', function
         $location.path('feedback-topic');
     };
 
-    $scope.submitCGNum = function (netId) {
+    $scope.submitCGNum = function (netId, event) {
         $scope.infoProvided.CG_id = netId;
-//        $scope.infoProvided.event = event;
+        $scope.infoProvided.event = event;
     };
 
     $scope.keepAnswerA = function (topicA) {

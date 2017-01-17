@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 // Create schemas and models for mongo
 var urlSchema = mongoose.Schema({
     CG_id: String,
-//    event: String,
+    event: String,
     feedback: String,
     questionA: String,
     questionB: String,
@@ -32,7 +32,7 @@ module.exports = {
         this.connect();
         var data = null;
         var newFeedback = new feedbackModel({"CG_id": url.CG_id,
-//            "event": url.event,
+            "event": url.event,
             "feedback": url.feedback,
             "questionA": url.questionA,
             "questionB": url.questionB,
